@@ -31,7 +31,7 @@ export function Home(){
             <ContentHome>
             {posts.map(post=>{
                 return(
-                <Post key={post.id}>
+                <Post key={post.id} onClick={()=>{console.log('clicou')}}>
                     <HeaderPost>{post.title}</HeaderPost>
                     <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
                 </Post>

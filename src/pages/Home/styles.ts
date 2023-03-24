@@ -5,17 +5,16 @@ export const ContainerHome = styled('div',{
     maxWidth:864,
     height:'100%',
     margin:'auto',
-    padding:'1rem'
+    padding:'1rem',
 })
 
 export const SearchBox = styled('div',{
     display:"flex",
-    height:60
+    height:60,
 })
 
 export const SearchInput = styled('input',{
     width:'100%',
-    height:'100%',  
     padding: '1rem',
     backgroundColor:"$gray800",
     borderRadius:'8px 0px 0px 8px ',
@@ -53,14 +52,26 @@ export const ContentHome = styled('main',{
 })
 
 export const Post = styled(Box,{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '.75rem',
+    transition:"ease-in 100ms",
+    cursor:'pointer',
+    "&:hover":{
+        transform:'scale(1.01)',
+        boxShadow:' inset 0px  0px 5px #00B37E'
+       }
 })
 
 export const HeaderPost = styled(Heading,{   
+    color:"$ignite500",
+    textAlign:"center",
    overflow: 'hidden',
    display: '-webkit-box',
    '-webkit-line-clamp': 1,
    '-webkit-box-orient': 'vertical',
    'text-overflow': 'ellipsis',
+   
 })
 
 export const DescriptionPost = styled(Text,{
