@@ -1,13 +1,27 @@
-import { ButtonSearch, ContainerHome, ContentHome, DescriptionPost, Post, SearchBox, SearchInput } from "./styles";
-import { Heading,Text} from "@bruno-gom-ignite-ui/react";
+import { ButtonSearch, ContainerHome, ContentHome, DescriptionPost, HeaderPost, Post, SearchBox, SearchInput } from "./styles";
+import { Heading} from "@bruno-gom-ignite-ui/react";
+import {useContextSelector} from 'use-context-selector';
+import { PostContext } from "../../contexts/PostContext";
 
-interface PostProps{
-    id:string
-    title:string
-    description:string
-}
+
+
+
 
 export function Home(){
+
+    const {posts,isLoading,error} = useContextSelector(
+        PostContext,
+        (ctx)=>ctx
+        )
+
+
+
+        if(error){
+            return alert(error);
+        }
+
+        
+
     return(
         <ContainerHome>
             <SearchBox>
@@ -15,14 +29,15 @@ export function Home(){
                 <ButtonSearch>Pesquisar</ButtonSearch>
             </SearchBox>
             <ContentHome>
-                <Post>
-                    <Heading>Post</Heading>
-                    <DescriptionPost size={'sm'}>Description post</DescriptionPost>
+            {posts.map(post=>{
+                return(
+                <Post key={post.id}>
+                    <HeaderPost>{post.title}</HeaderPost>
+                    <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
                 </Post>
-                <Post>
-                    <Heading>Post</Heading>
-                    <DescriptionPost size={'sm'}>Description post</DescriptionPost>
-                </Post>
+                )
+            })}
+                
             </ContentHome>
         </ContainerHome>
     )
