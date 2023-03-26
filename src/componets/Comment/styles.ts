@@ -5,6 +5,7 @@ export const CommentBox = styled(Box,{
     marginTop:'1rem',
     padding:'.5rem 1rem',
     a:{
+      marginTop:10,
       textDecoration:'none',
       p:{
         color:'$ignite500',

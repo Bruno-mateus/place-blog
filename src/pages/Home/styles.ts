@@ -43,7 +43,11 @@ export const ContentHome = styled('main',{
     alignItems :'center',
     marginTop:'2rem',
     gap:'1rem',
-    padding:'1rem 0'
+    padding:'1rem 0',
+    '@media (max-width:768px)': {
+        gridTemplateColumns:' 1fr',  
+        padding:"1rem"
+    }
 })
 
 

@@ -32,7 +32,7 @@ export function PagePost(){
                 </PostContent>
             </PagePostContent>
             <CommentContainer>
-                <header><Heading>Comentários</Heading></header>                
+                <header><Heading>Comentários</Heading> <Text>{comments?.length}</Text></header>                
                 {
                     comments?.map(comment =>{
                         return(

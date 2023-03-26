@@ -21,6 +21,8 @@ export const CommentContainer = styled('section',{
         backgroundColor:'$ignite900',
         borderRadius:10,
         padding:'.5rem 1rem',
+        justifyContent:"space-between",
+        display: 'flex',
     },
     width:'80%',
     margin:'3rem auto 0',
