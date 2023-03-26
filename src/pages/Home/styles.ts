@@ -1,12 +1,6 @@
 import { Box,Heading,Text } from "@bruno-gom-ignite-ui/react";
 import { styled } from "../../styles/styles";
 
-export const ContainerHome = styled('div',{
-    maxWidth:864,
-    height:'100%',
-    margin:'auto',
-    padding:'1rem',
-})
 
 export const SearchBox = styled('div',{
     display:"flex",
@@ -15,11 +9,11 @@ export const SearchBox = styled('div',{
 
 export const SearchInput = styled('input',{
     width:'100%',
-    padding: '1rem',
+    padding: '0 1rem',
     backgroundColor:"$gray800",
     borderRadius:'8px 0px 0px 8px ',
     border:'none',
-    fontSize:'small',
+    fontSize:'medium',
     color:"$gray100",
     outline:'none',
     '&:focus':{
@@ -48,8 +42,10 @@ export const ContentHome = styled('main',{
     justifyContent: 'center',
     alignItems :'center',
     marginTop:'2rem',
-    gap:'1rem'
+    gap:'1rem',
+    padding:'1rem 0'
 })
+
 
 export const Post = styled(Box,{
     display: 'flex',
@@ -59,7 +55,11 @@ export const Post = styled(Box,{
     cursor:'pointer',
     "&:hover":{
         transform:'scale(1.01)',
-        boxShadow:' inset 0px  0px 5px #00B37E'
+        boxShadow:' inset 0px  0px 5px #00B37E',
+        color:'#fff',
+        h2:{
+            color:'$ignite300'
+        }
        }
 })
 

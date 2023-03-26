@@ -12,8 +12,14 @@ export const {
     createTheme
 }= createStitches({
     theme:{
-        colors:{
-            ...colors
+        default:{
         }
-    }
+    },
+})
+
+export const ContainerDefault = styled('div',{
+    maxWidth:864,
+    height:'100%',
+    margin:'auto',
+    padding:'1rem',
 })
