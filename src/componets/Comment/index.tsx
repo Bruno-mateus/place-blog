@@ -5,14 +5,15 @@ import { CommentBox } from "./styles";
 interface CommentProps{
     body:string
     author:string
+    title:string
 }
 
-export function Comment({body,author}:CommentProps){
+export function Comment({title,body,author}:CommentProps){
     return(
         <CommentBox>
-            <Link to='/'><Text size={"sm"}>{author}</Text></Link>
-                
-                <Text size={"md"}>{body}</Text>
+                <Text size={"md"}>{title}</Text>  
+                <Text size={"sm"}>{author}</Text>    
+                <Text size={"lg"}>{body}</Text>
         </CommentBox>
     )
 }

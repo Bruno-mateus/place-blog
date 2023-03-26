@@ -7,6 +7,7 @@ import { PostProps } from '../../types/PostProps';
 import { Heading, Text } from '@bruno-gom-ignite-ui/react';
 import { Comment } from '../../componets/Comment';
 import { CommentProps } from '../../types/CommentProps';
+import { Header } from '../../componets/Header';
 
 export function PagePost(){
     const {id} = useParams()
@@ -24,10 +25,13 @@ export function PagePost(){
 
 
     return (
+    <>
+        <Header/>
         <ContainerDefault>
             <PagePostContent>
                 <Heading>{post?.title}</Heading>
                 <PostContent>
+                    <Text size={'sm'}>{post?.email}</Text>
                     <Text>{post?.body}</Text>
                 </PostContent>
             </PagePostContent>
@@ -36,12 +40,14 @@ export function PagePost(){
                 {
                     comments?.map(comment =>{
                         return(
-                            <Comment key={comment.id} author={comment.email} body={comment.body}/>
+                            <Comment key={comment.id} title={comment.name} author={comment.email} body={comment.body}/>
                         )
                     })
                 }
             </CommentContainer>
        </ContainerDefault>
+    </>
+        
      
     )
 }

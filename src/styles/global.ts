@@ -17,5 +17,8 @@ export const globalStyles = globalCss({
     },
     '#root':{
         height:'100vh'
+    },
+    a:{
+        textDecoration:'none'
     }
 })
