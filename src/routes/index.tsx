@@ -8,7 +8,7 @@ export const router = createHashRouter([
         element: <Home/>
     },
     {
-        path:'/post/:id',
+        path:'/post/#/:id',
         element:<PagePost/>
     }
 ])
