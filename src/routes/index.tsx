@@ -1,14 +1,14 @@
-import {createBrowserRouter, createHashRouter} from 'react-router-dom'
+import {createBrowserRouter} from 'react-router-dom'
 import { Home } from '../pages/Home'
 import { PagePost } from '../pages/PostPage'
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
     {
         path:'/',
         element: <Home/>
     },
     {
-        path:'/post/#/:id',
+        path:'/post/:id',
         element:<PagePost/>
     }
 ])

@@ -3,6 +3,7 @@ import { ContainerDefault } from "../../styles/styles";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { PostProps } from "../../types/PostProps";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,10 +34,13 @@ export function Home(){
             <ContentHome>
             {posts?.map(post=>{
                 return(
-                <Post key={post.id} onClick={()=>{location.href=`/post/${post.id}`}}>
-                    <HeaderPost>{post.title}</HeaderPost>
-                    <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
-                </Post>
+                    <Link key={post.id} to={`/post/${post.id}`}>
+                          <Post>
+                            <HeaderPost>{post.title}</HeaderPost>
+                            <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
+                        </Post>
+                    </Link>
+
                 )
             })}
                 
