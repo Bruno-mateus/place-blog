@@ -5,9 +5,10 @@ import { useQuery } from "react-query";
 import { PostProps } from "../../types/PostProps";
 import { Link } from "react-router-dom";
 import { SearchInput } from "../../componets/SearchInput";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Heading } from "@bruno-gom-ignite-ui/react";
 import { Header } from "../../componets/Header";
+import { SpinnerCircular } from 'spinners-react';
 
 
 
@@ -42,7 +43,7 @@ export function Home(){
                 <Header/>
                 <ContainerDefault>
                     <SearchInput placeholder="Procurar um post" callback={filterPostList}/>
-                    <Heading size={'lg'}>Nenhum Post Encontrado</Heading>
+                    <Heading size={'lg'}>Nenhum Post Encontrado.</Heading>
                 </ContainerDefault>
                 </>
 
@@ -57,12 +58,20 @@ export function Home(){
 
             {postList?.map(post=>{
                 return(
-                    <Link key={post.id} to={`/post/${post.id}`}>
-                          <Post>
-                            <HeaderPost>{post.title}</HeaderPost>
-                            <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
-                        </Post>
-                    </Link>
+                    <>
+                        {
+                            isLoading?(
+                                <SpinnerCircular/>
+                            ):(
+                                <Link key={post.id} to={`/post/${post.id}`}>
+                                    <Post>
+                                        <HeaderPost>{post.title}</HeaderPost>
+                                        <DescriptionPost size={'sm'}>{post.body}</DescriptionPost>
+                                    </Post>
+                                </Link>
+                            )
+                        }
+                    </>
 
                 )
             })}

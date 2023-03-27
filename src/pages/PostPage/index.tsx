@@ -8,6 +8,7 @@ import { Heading, Text } from '@bruno-gom-ignite-ui/react';
 import { Comment } from '../../componets/Comment';
 import { CommentProps } from '../../types/CommentProps';
 import { Header } from '../../componets/Header';
+import { SpinnerCircular } from 'spinners-react';
 
 export function PagePost(){
     const {id} = useParams()
@@ -31,8 +32,16 @@ export function PagePost(){
             <PagePostContent>
                 <Heading>{post?.title}</Heading>
                 <PostContent>
-                    <Text size={'sm'}>{post?.email}</Text>
-                    <Text>{post?.body}</Text>
+                    {
+                        isLoading?(
+                            <SpinnerCircular/>
+                        ):(
+                            <>
+                            <Text size={'sm'}>{post?.email}</Text>
+                            <Text>{post?.body}</Text>
+                            </>
+                        )
+                    }
                 </PostContent>
             </PagePostContent>
             <CommentContainer>

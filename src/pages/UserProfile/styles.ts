@@ -22,6 +22,7 @@ export const UserContent  = styled('div',{
             listStyle: 'none',
             color:'$ignite100',
             display:'flex',
+            gap:5,
             span:{
                 color:'$ignite500'
             },

@@ -8,6 +8,8 @@ import { SearchInput } from "../../componets/SearchInput";
 import { ContainerDefault } from "../../styles/styles";
 import { UserProps } from "../../types/UserProps";
 import { UserBox, UsersListContainer } from "./styles";
+import { SpinnerCircular } from "spinners-react"
+
 
 export function Users(){
     const [userList,setUserList]=useState<UserProps[] | undefined>([])
@@ -19,15 +21,38 @@ export function Users(){
     })
 
     function filterUser(query?:string){
-        const refreshUserList = users?.filter(user=>query?user.email.includes(query)||user.name.includes(query):users)
+        let words = query?.split(" ");
+        //@ts-ignore
+        for (let i = 0; i < words.length; i++) {
+        //@ts-ignore
+          words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        //@ts-ignore
+        let queryCapitalized = words.join(" ");
+
+        const refreshUserList = users?.filter(user=>query?user.email.includes(queryCapitalized)||user.name.includes(queryCapitalized):users)
           if(query===undefined) setUserList(users)
           setUserList(refreshUserList)
           console.log(refreshUserList)
       }
+      
 
     useEffect(()=>{
         setUserList(users)
     },[users])
+
+    if(userList?.length===0){
+        return(
+            <>
+                <Header/>
+                <ContainerDefault>
+                    <SearchInput placeholder="Digite um nome ou email" callback={filterUser} buttonTitle="Procurar"/>
+                        <Heading size={'lg'}>Nenhum usuário encontrado.</Heading> 
+                </ContainerDefault>
+            </>
+        )
+    }
+
 
     return(
     <>
@@ -37,18 +62,22 @@ export function Users(){
             <UsersListContainer>
                 
             {
-                userList?.map(user=>{
-                    return(
-                    <Link to={`/user/${user.id}`}>
-                        <UserBox key={user.id}>
-                            <Text size={'md'}> <span>Nome:{' '}</span>{user.name}</Text>
-                            <Text size={'md'}> <span>Email:{' '}</span> {user.email}</Text>
-                            <Text size={'md'}><span>Companhia:{' '}</span> {user.company.name}</Text>
-                        </UserBox>
-                    </Link>
-
-                    )
-                })
+                isLoading?(
+                    <SpinnerCircular/>
+                ):(
+                    userList?.map(user=>{
+                        return(
+                        <Link key={user.id} to={`/user/${user.id}`}>
+                            <UserBox>
+                                <Text size={'md'}> <span>Nome:{' '}</span>{user.name}</Text>
+                                <Text size={'md'}> <span>Email:{' '}</span> {user.email}</Text>
+                                <Text size={'md'}><span>Companhia:{' '}</span> {user.company.name}</Text>
+                            </UserBox>
+                        </Link>
+    
+                        )
+                    })
+                )
             }
 
             </UsersListContainer>
