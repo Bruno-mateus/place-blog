@@ -22,7 +22,7 @@ o https://jsonplaceholder.typicode.com/users/[ID]
 - Axios
 - React Query
 - React Router Dom
-- Design System (um pacote meu) ![@bruno-gom-ignite-ui/react](https://www.npmjs.com/package/@bruno-gom-ignite-ui/react)
+- Design System (um pacote meu) https://www.npmjs.com/package/@bruno-gom-ignite-ui/react
 - Phosphor icons
 
 # Como utilizar a aplicação
