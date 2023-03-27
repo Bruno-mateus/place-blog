@@ -29,7 +29,7 @@ o https://jsonplaceholder.typicode.com/users/[ID]
 Basta clonar esse repositório e instalar as depedencias utilizado os comandos ||<b>npm i</b>|| ou ||<b>yarn add</b>||.
 <p> Após a instalações das depedencias, basta executar o comando <b>npm run dev</b> e ir no link localhost que aparecerá no terminal.</p>
 
-<p>Ou você poderá testar o blog em produção ![lorem blog](https://place-blog.vercel.app/) </p>.
+<p>Ou você poderá testar o blog em produção https://place-blog.vercel.app/ </p>.
 
 ### Observações
 A API é publica e limitada, a aplicação terá apenas os recuros solicitados no teste, o desgin não foi pré criado foi ganhando forma conforme fui desenvolvendo a aplicação.
