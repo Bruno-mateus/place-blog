@@ -31,8 +31,7 @@ Basta clonar esse repositório e instalar as depedencias utilizado os comandos |
 
 <p>Ou você poderá testar o blog em produção ![lorem blog](https://place-blog.vercel.app/) </p>.
 
-![image](https://user-images.githubusercontent.com/63961258/227834258-f2ed2c64-acc6-4cd9-9f57-472b854da46a.png)
-
-
 ### Observações
 A API é publica e limitada, a aplicação terá apenas os recuros solicitados no teste, o desgin não foi pré criado foi ganhando forma conforme fui desenvolvendo a aplicação.
+
+![image](https://user-images.githubusercontent.com/63961258/227835083-f83fe4c5-0e9e-4a8c-a87a-0d284d545494.png)
