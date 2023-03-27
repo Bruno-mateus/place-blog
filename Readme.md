@@ -7,14 +7,10 @@ O desafio consiste em utitlizar a API do https://jsonplaceholder.typicode.com/, 
 #### SUA TAREFA
 Você ficou responsável pela demanda e sua tarefa é projetar uma interface para atender as
 necessidades. Os seguintes serviços estão disponíveis:
-- Listagem de posts:
-- https://jsonplaceholder.typicode.com/posts
-- Listagem de comentários de um post:
-- https://jsonplaceholder.typicode.com/posts/[ID]/comments
-- Listagem de usuários:
-- https://jsonplaceholder.typicode.com/users
-- Detalhes de um usuário:
-- https://jsonplaceholder.typicode.com/users/[ID]
+- Listagem de posts: https://jsonplaceholder.typicode.com/posts
+- Listagem de comentários de um post: https://jsonplaceholder.typicode.com/posts/[ID]/comments
+- Listagem de usuários: https://jsonplaceholder.typicode.com/users
+- Detalhes de um usuário: https://jsonplaceholder.typicode.com/users/[ID]
 
 ## Tecnologias utilizadas
 - React + Vite 
