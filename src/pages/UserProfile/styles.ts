@@ -4,7 +4,7 @@ import { styled } from "@stitches/react";
 export const UserContainer = styled(Box,{
     margin:'auto',
     padding:'1rem',
-    width:260,
+    width:320,
     position:'relative',
     display:'flex',
     justifyContent: 'center',
