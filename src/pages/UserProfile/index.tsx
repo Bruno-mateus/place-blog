@@ -11,11 +11,13 @@ import { UserAvatar, UserContainer, UserContent } from "./styles"
 
 export function UserProfile(){
     const {id} = useParams()
-    const {data:user,isLoading,error} = useQuery<UserProps>('user',async()=>{
+    const {data:user,isLoading,error,isFetching} = useQuery<UserProps>('user',async()=>{
         const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
         return response.data
     })
-
+    if(error){
+        alert(error)
+    }
 
     return (
         <>
@@ -28,7 +30,7 @@ export function UserProfile(){
                 </UserAvatar>
                 <UserContent>
                     {
-                        isLoading?(
+                        isLoading || isFetching?(
                             <SpinnerCircular/>
                         ):(
                         <ul>

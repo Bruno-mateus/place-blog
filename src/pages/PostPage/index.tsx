@@ -14,44 +14,56 @@ export function PagePost(){
     const {id} = useParams()
    
 
-    const {data:post, error,isLoading} = useQuery<PostProps>('post', async()=>{
+    const {data:post, error,isLoading,isFetching} = useQuery<PostProps>('post', async()=>{
         const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
         return response.data
     })
 
-    const {data:comments} = useQuery<CommentProps[]>('comments', async()=>{
+    const {data:comments,isLoading:isLoadingComments,isFetching:isFetchingComments} = useQuery<CommentProps[]>('comments', async()=>{
         const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
         return response.data
     })
-
+    if(error){
+        alert(error)
+    }
 
     return (
     <>
         <Header/>
         <ContainerDefault>
             <PagePostContent>
-                <Heading>{post?.title}</Heading>
-                <PostContent>
-                    {
-                        isLoading?(
-                            <SpinnerCircular/>
-                        ):(
-                            <>
-                            <Text size={'sm'}>{post?.email}</Text>
-                            <Text>{post?.body}</Text>
-                            </>
-                        )
-                    }
-                </PostContent>
+                {
+                    isLoadingComments || isFetchingComments?(
+                        <Heading><SpinnerCircular/></Heading>
+                    ):(
+
+                        <>
+                            <Heading>{post?.title}</Heading>
+                            <PostContent>                    
+                                <Text size={'sm'}>{post?.email}</Text>
+                                <Text>{post?.body}</Text>                                  
+                            </PostContent>
+                        </>
+                )
+                       
+
+                }
+                
+
             </PagePostContent>
             <CommentContainer>
                 <header><Heading>Comentários</Heading> <Text>{comments?.length}</Text></header>                
                 {
-                    comments?.map(comment =>{
-                        return(
-                            <Comment key={comment.id} title={comment.name} author={comment.email} body={comment.body}/>
-                        )
-                    })
+                    isFetching || isLoading?(
+                        <SpinnerCircular/>
+                    ):(
+                        
+                        comments?.map(comment =>{
+                            return(
+                                <Comment key={comment.id} title={comment.name} author={comment.email} body={comment.body}/>
+                            )
+                        })
+                    )
                 }
             </CommentContainer>
        </ContainerDefault>

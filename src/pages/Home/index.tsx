@@ -18,7 +18,7 @@ export function Home(){
 
         const [postList,setListPost]=useState<PostProps[] | undefined>([])
 
-        const {data:posts,error,isLoading} = useQuery<PostProps[]>('posts', async()=>{
+        const {data:posts,error,isLoading,isFetching} = useQuery<PostProps[]>('posts', async()=>{
             const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
             return response.data
         })
@@ -60,8 +60,15 @@ export function Home(){
                 return(
                     <>
                         {
-                            isLoading?(
-                                <SpinnerCircular/>
+                            
+                            isLoading || isFetching?(
+                                <Post>
+                                    <HeaderPost>
+                                        <SpinnerCircular/>
+                                    </HeaderPost>
+                                    
+                                </Post>
+                                
                             ):(
                                 <Link key={post.id} to={`/post/${post.id}`}>
                                     <Post>

@@ -15,10 +15,14 @@ export function Users(){
     const [userList,setUserList]=useState<UserProps[] | undefined>([])
 
     
-    const {data:users,error,isLoading} = useQuery<UserProps[] | undefined>('users',async()=>{
+    const {data:users,error,isLoading,isFetching} = useQuery<UserProps[] | undefined>('users',async()=>{
         const response = await axios.get(`https://jsonplaceholder.typicode.com/users`)
         return response.data
     })
+
+    if(error){
+        alert(error)
+    }
 
     function filterUser(query?:string){
         let words = query?.split(" ");
@@ -44,13 +48,30 @@ export function Users(){
     if(userList?.length===0){
         return(
             <>
-                <Header/>
-                <ContainerDefault>
-                    <SearchInput placeholder="Digite um nome ou email" callback={filterUser} buttonTitle="Procurar"/>
+                 <Header/>
+            {
+                isLoading || isFetching?(
+                    <ContainerDefault>
+                        <SearchInput placeholder="Digite um nome ou email" callback={filterUser} buttonTitle="Procurar"/>
+                        <UsersListContainer>
+                            <SpinnerCircular/>    
+                        </UsersListContainer>                      
+                    </ContainerDefault>
+                    
+                ):(
+                
+                   
+                    <ContainerDefault>
+                        <SearchInput placeholder="Digite um nome ou email" callback={filterUser} buttonTitle="Procurar"/>
                         <Heading size={'lg'}>Nenhum usuário encontrado.</Heading> 
-                </ContainerDefault>
-            </>
-        )
+                    </ContainerDefault>
+               
+                )
+                
+            }
+                
+            </>)
+        
     }
 
 
@@ -62,8 +83,11 @@ export function Users(){
             <UsersListContainer>
                 
             {
-                isLoading?(
-                    <SpinnerCircular/>
+                isLoading || isFetching?(
+                    <UserBox>
+                        <SpinnerCircular/>
+                    </UserBox>
+                    
                 ):(
                     userList?.map(user=>{
                         return(
