@@ -28,10 +28,10 @@ export function Home(){
         }
 
         function filterPostList(query?:string){
-          const refreshPost = posts?.filter(post=>query?post.title.includes(query):posts)
+            const queryLowerCase = query?.toLowerCase()
+          const refreshPost = posts?.filter(post=>queryLowerCase?post.title.includes(queryLowerCase):posts)
             if(query===undefined) setListPost(posts)
             setListPost(refreshPost)
-            console.log(refreshPost)
         }
         
         useEffect(()=>{
