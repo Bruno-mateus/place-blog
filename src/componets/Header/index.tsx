@@ -6,7 +6,7 @@ export function Header(){
     return(
         <HeaderContainer>
             <Link to='/'>
-                <Heading draggable><span>{'<'}</span>Lorem <span>Blog</span>{'/>'}</Heading>
+                <Heading draggable><span>{'<'}</span>Place <span>Blog</span>{'/>'}</Heading>
             </Link>
             
             <Link to="/users">
