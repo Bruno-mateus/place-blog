@@ -87,7 +87,7 @@ export function Home(){
                                 Pagina anterior
                     </Button>
                     <Text>
-                        Página {currentPage} de {totalPages}
+                        {currentPage}/{totalPages}
                     </Text>
                 <Button  
                     onClick={()=>{
