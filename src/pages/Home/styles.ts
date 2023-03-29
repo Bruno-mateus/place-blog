@@ -9,7 +9,7 @@ export const ContentHome = styled('main',{
     width:'100%',
     justifyContent: 'center',
     alignItems :'center',
-    marginTop:'2rem',
+    marginTop:'1rem',
     gap:'1rem',
     padding:'1rem 0',
     '@media (max-width:768px)': {
@@ -53,4 +53,12 @@ export const DescriptionPost = styled(Text,{
    '-webkit-line-clamp': 2,
    '-webkit-box-orient': 'vertical',
    'text-overflow': 'ellipsis',
+})
+
+export const PaginationPost = styled('div',{
+    marginTop:'2rem',
+    width:'100%',
+    display:'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 })

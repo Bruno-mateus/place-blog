@@ -8,7 +8,7 @@ import { Heading, Text } from '@bruno-gom-ignite-ui/react';
 import { Comment } from '../../componets/Comment';
 import { CommentProps } from '../../types/CommentProps';
 import { Header } from '../../componets/Header';
-import { SpinnerCircular } from 'spinners-react';
+import { Loading } from '../../componets/Loading';
 
 export function PagePost(){
     const {id} = useParams()
@@ -31,10 +31,11 @@ export function PagePost(){
     <>
         <Header/>
         <ContainerDefault>
+        
             <PagePostContent>
                 {
                     isLoadingComments || isFetchingComments?(
-                        <Heading><SpinnerCircular/></Heading>
+                        <Heading><Loading/></Heading>
                     ):(
 
                         <>
@@ -55,7 +56,7 @@ export function PagePost(){
                 <header><Heading>Comentários</Heading> <Text>{comments?.length}</Text></header>                
                 {
                     isFetching || isLoading?(
-                        <SpinnerCircular/>
+                        <Loading/>
                     ):(
                         
                         comments?.map(comment =>{

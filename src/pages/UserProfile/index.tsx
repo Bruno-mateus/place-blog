@@ -3,8 +3,8 @@ import axios from "axios"
 import { User } from "phosphor-react"
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
-import { SpinnerCircular } from "spinners-react"
 import { Header } from "../../componets/Header"
+import { Loading } from "../../componets/Loading"
 import { ContainerDefault } from "../../styles/styles"
 import { UserProps } from "../../types/UserProps"
 import { UserAvatar, UserContainer, UserContent } from "./styles"
@@ -23,7 +23,7 @@ export function UserProfile(){
         <>
         <Header/>
         <ContainerDefault>
-            
+
             <UserContainer>
                 <UserAvatar>
                  <User size={22} color='#fff'/>
@@ -31,7 +31,8 @@ export function UserProfile(){
                 <UserContent>
                     {
                         isLoading || isFetching?(
-                            <SpinnerCircular/>
+                           <Loading/>
+
                         ):(
                         <ul>
                             <li><Text size={'sm'}><span>Nome:</span></Text>{' '}<Text size={'sm'}>{user?.name}</Text></li>

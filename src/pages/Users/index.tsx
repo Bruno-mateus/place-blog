@@ -11,6 +11,7 @@ import { UserBox, UsersListContainer } from "./styles";
 import { SpinnerCircular } from "spinners-react"
 
 
+
 export function Users(){
     const [userList,setUserList]=useState<UserProps[] | undefined>([])
 
@@ -53,6 +54,7 @@ export function Users(){
                 isLoading || isFetching?(
                     <ContainerDefault>
                         <SearchInput placeholder="Digite um nome ou email" callback={filterUser} buttonTitle="Procurar"/>
+
                         <UsersListContainer>
                             <SpinnerCircular/>    
                         </UsersListContainer>                      
